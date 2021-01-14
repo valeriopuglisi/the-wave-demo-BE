@@ -1,0 +1,8 @@
+#https://spring.io/guides/gs/spring-boot-docker/
+FROM openjdk:15
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY  ${JAR_FILE} app.jar
+EXPOSE 8080
+EXPOSE 3308
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
